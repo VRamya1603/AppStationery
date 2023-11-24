@@ -1,0 +1,96 @@
+@page
+@model AppStationery.Pages_PrintingStationeries.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PrintingStationery[0].Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PrintingStationery[0].Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PrintingStationery[0].IsNumbered)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PrintingStationery[0].IsWithCarbon)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PrintingStationery[0].IsContinuos)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PrintingStationery[0].NoOfPagesInOneBook)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PrintingStationery[0].NoOfCopies)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PrintingStationery[0].TenantId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PrintingStationery[0].Comments)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PrintingStationery[0].IsActive)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PrintingStationery[0].IsDeleted)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.PrintingStationery) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsNumbered)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsWithCarbon)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsContinuos)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NoOfPagesInOneBook)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NoOfCopies)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenantId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Comments)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsActive)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsDeleted)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.PrintingStationeryId">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.PrintingStationeryId">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.PrintingStationeryId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

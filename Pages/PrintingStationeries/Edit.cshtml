@@ -1,0 +1,85 @@
+@page
+@model AppStationery.Pages_PrintingStationeries.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>PrintingStationery</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="PrintingStationery.PrintingStationeryId" />
+            <div class="form-group">
+                <label asp-for="PrintingStationery.Name" class="control-label"></label>
+                <input asp-for="PrintingStationery.Name" class="form-control" />
+                <span asp-validation-for="PrintingStationery.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PrintingStationery.Description" class="control-label"></label>
+                <input asp-for="PrintingStationery.Description" class="form-control" />
+                <span asp-validation-for="PrintingStationery.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="PrintingStationery.IsNumbered" /> @Html.DisplayNameFor(model => model.PrintingStationery.IsNumbered)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="PrintingStationery.IsWithCarbon" /> @Html.DisplayNameFor(model => model.PrintingStationery.IsWithCarbon)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="PrintingStationery.IsContinuos" /> @Html.DisplayNameFor(model => model.PrintingStationery.IsContinuos)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="PrintingStationery.NoOfPagesInOneBook" class="control-label"></label>
+                <input asp-for="PrintingStationery.NoOfPagesInOneBook" class="form-control" />
+                <span asp-validation-for="PrintingStationery.NoOfPagesInOneBook" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PrintingStationery.NoOfCopies" class="control-label"></label>
+                <input asp-for="PrintingStationery.NoOfCopies" class="form-control" />
+                <span asp-validation-for="PrintingStationery.NoOfCopies" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PrintingStationery.TenantId" class="control-label"></label>
+                <input asp-for="PrintingStationery.TenantId" class="form-control" />
+                <span asp-validation-for="PrintingStationery.TenantId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PrintingStationery.Comments" class="control-label"></label>
+                <textarea asp-for="PrintingStationery.Comments" class="form-control"></textarea>
+                <span asp-validation-for="PrintingStationery.Comments" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="PrintingStationery.IsActive" /> @Html.DisplayNameFor(model => model.PrintingStationery.IsActive)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="PrintingStationery.IsDeleted" /> @Html.DisplayNameFor(model => model.PrintingStationery.IsDeleted)
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,132 @@
+@page
+@model AppStationery.Pages_StationeryQuotes.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.StationeryQuote[0].PrintingStationery)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StationeryQuote[0].QuoteNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StationeryQuote[0].ReferenceNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StationeryQuote[0].QuotedOn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StationeryQuote[0].QuotePerCopyPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StationeryQuote[0].QuotePerBookPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StationeryQuote[0].ApprovedPerCopyPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StationeryQuote[0].ApprovedPerBookPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StationeryQuote[0].MinmumOrderQuantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StationeryQuote[0].Branch)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StationeryQuote[0].TenantId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StationeryQuote[0].ApprovalState)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StationeryQuote[0].ApprovedBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StationeryQuote[0].ApprovedOn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StationeryQuote[0].Comments)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StationeryQuote[0].IsActive)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StationeryQuote[0].IsDeleted)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.StationeryQuote) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrintingStationery.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QuoteNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReferenceNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QuotedOn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QuotePerCopyPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QuotePerBookPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApprovedPerCopyPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApprovedPerBookPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MinmumOrderQuantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Branch.BranchName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenantId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApprovalState)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApprovedBy.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApprovedOn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Comments)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsActive)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsDeleted)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.StationeryQuoteId">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.StationeryQuoteId">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.StationeryQuoteId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,120 @@
+@page
+@model AppStationery.Pages_StationeryQuotes.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>StationeryQuote</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="StationeryQuote.StationeryQuoteId" />
+            <div class="form-group">
+                <label asp-for="StationeryQuote.PrintingStationeryId" class="control-label">PrintingStationery-Name</label>
+                <select asp-for="StationeryQuote.PrintingStationeryId" class="form-control" asp-items="ViewBag.PrintingStationeryId"></select>
+                <span asp-validation-for="StationeryQuote.PrintingStationeryId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StationeryQuote.QuoteNo" class="control-label"></label>
+                <input asp-for="StationeryQuote.QuoteNo" class="form-control" />
+                <span asp-validation-for="StationeryQuote.QuoteNo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StationeryQuote.ReferenceNo" class="control-label"></label>
+                <input asp-for="StationeryQuote.ReferenceNo" class="form-control" />
+                <span asp-validation-for="StationeryQuote.ReferenceNo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StationeryQuote.QuotedOn" class="control-label"></label>
+                <input asp-for="StationeryQuote.QuotedOn" class="form-control" />
+                <span asp-validation-for="StationeryQuote.QuotedOn" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StationeryQuote.QuotePerCopyPrice" class="control-label"></label>
+                <input asp-for="StationeryQuote.QuotePerCopyPrice" class="form-control" />
+                <span asp-validation-for="StationeryQuote.QuotePerCopyPrice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StationeryQuote.QuotePerBookPrice" class="control-label"></label>
+                <input asp-for="StationeryQuote.QuotePerBookPrice" class="form-control" />
+                <span asp-validation-for="StationeryQuote.QuotePerBookPrice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StationeryQuote.ApprovedPerCopyPrice" class="control-label"></label>
+                <input asp-for="StationeryQuote.ApprovedPerCopyPrice" class="form-control" />
+                <span asp-validation-for="StationeryQuote.ApprovedPerCopyPrice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StationeryQuote.ApprovedPerBookPrice" class="control-label"></label>
+                <input asp-for="StationeryQuote.ApprovedPerBookPrice" class="form-control" />
+                <span asp-validation-for="StationeryQuote.ApprovedPerBookPrice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StationeryQuote.MinmumOrderQuantity" class="control-label"></label>
+                <input asp-for="StationeryQuote.MinmumOrderQuantity" class="form-control" />
+                <span asp-validation-for="StationeryQuote.MinmumOrderQuantity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StationeryQuote.BranchId" class="control-label">Branch</label>
+                <select asp-for="StationeryQuote.BranchId" class="form-control" asp-items="ViewBag.BranchId"></select>
+                <span asp-validation-for="StationeryQuote.BranchId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StationeryQuote.TenantId" class="control-label"></label>
+                <input asp-for="StationeryQuote.TenantId" class="form-control" />
+                <span asp-validation-for="StationeryQuote.TenantId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StationeryQuote.ApprovalState" class="control-label"></label>
+                <select asp-for="StationeryQuote.ApprovalState" class="form-control">
+                    @foreach (var state in Enum.GetValues(typeof(AppStationery.Model.ApprovalState)))
+                    {
+                        <option value="@state">@state</option>
+                    }
+                </select>
+                <span asp-validation-for="StationeryQuote.ApprovalState" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StationeryQuote.ApprovedById" class="control-label">ApprovedBy</label>
+                <select asp-for="StationeryQuote.ApprovedById" class="form-control" asp-items="ViewBag.ApprovedById"></select>
+                <span asp-validation-for="StationeryQuote.ApprovedById" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StationeryQuote.ApprovedOn" class="control-label"></label>
+                <input asp-for="StationeryQuote.ApprovedOn" class="form-control" />
+                <span asp-validation-for="StationeryQuote.ApprovedOn" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StationeryQuote.Comments" class="control-label"></label>
+                <textarea asp-for="StationeryQuote.Comments" class="form-control"></textarea>
+                <span asp-validation-for="StationeryQuote.Comments" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="StationeryQuote.IsActive" /> @Html.DisplayNameFor(model => model.StationeryQuote.IsActive)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="StationeryQuote.IsDeleted" /> @Html.DisplayNameFor(model => model.StationeryQuote.IsDeleted)
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
