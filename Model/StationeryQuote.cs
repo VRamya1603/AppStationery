@@ -36,7 +36,7 @@ namespace AppStationery.Model
         public decimal? ApprovedPerCopyPrice { get; set; }
         public decimal? ApprovedPerBookPrice { get; set; }
 
-        public decimal? MinmumOrderQuantity { get; set; }
+        public int? MinmumOrderQuantity { get; set; }
 
         [Display(Name = "Branch")]
         public int? BranchId { get; set; }
