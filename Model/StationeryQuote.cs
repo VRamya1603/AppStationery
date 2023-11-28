@@ -7,7 +7,7 @@ using Finbuckle.MultiTenant;
 
 namespace AppStationery.Model
 {
-        public enum ApprovalState
+    public enum ApprovalState
     {
         Pending,
         Approved,
