@@ -1,0 +1,42 @@
+@page
+@model AppStationery.Pages_StationeryQuotes.ApprovalDetailsModel
+
+
+@{
+    ViewData["Title"] = "Approval Details";
+}
+
+<h1>Approval Details</h1>
+
+<div>
+    <h4>StationeryQuote</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ApprovalDetails.PrintingStationery)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ApprovalDetails.PrintingStationery)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ApprovalDetails.ApprovedBy)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ApprovalDetails.ApprovedBy)
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ApprovalDetails.Branch)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ApprovalDetails.Branch)
+        </dd>
+
+        <dt class="col-sm-2">Approved On</dt>
+        <dd class="col-sm-10">@TempData["SystemTime"]</dd>
+
+        <dt class="col-sm-2">Tenant </dt>
+        <dd class="col-sm-10">@Model.ApprovalDetails.Tenant</dd>
+</div>
+<div>
+    <button type="button"  onclick="location.href='@Url.Page("./Index")'" class="btn btn-primary">Back to List</button>
+</div>
+

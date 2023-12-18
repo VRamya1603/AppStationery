@@ -36,7 +36,63 @@ namespace AppStationery.Pages_StationeryQuotes
             {
                 return NotFound();
             }
+
             return Page();
+        }
+
+        public async Task<IActionResult> OnPostApprovalAsync(int? id)
+            {
+                if (id == null)
+            {
+                return NotFound();
+            }
+
+            var stationeryQuoteToUpdate = await _context.StationeryQuote.FirstOrDefaultAsync(m => m.StationeryQuoteId == id);
+            if (stationeryQuoteToUpdate == null)
+            {
+                return NotFound();
+            }
+
+            stationeryQuoteToUpdate.ApprovalState = stationeryQuoteToUpdate.ApprovalState 
+                    == ApprovalState.Approved
+                    ? ApprovalState.Unapproved
+                    : ApprovalState.Approved;
+
+            if (stationeryQuoteToUpdate.ApprovalState == ApprovalState.Approved)
+            {   
+
+                stationeryQuoteToUpdate.ApprovedOn = DateTime.UtcNow;
+                TempData["SystemTime"] = DateTime.UtcNow.ToString("dd-MM-yyyy");
+                
+                await _context.SaveChangesAsync();
+                return RedirectToPage("./ApprovalDetails", new { id });
+            }
+
+            await _context.SaveChangesAsync();
+
+            return RedirectToPage("./Details", new { id });
+        } 
+
+        public async Task<IActionResult> OnPostActiveAsync(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var stationeryQuoteToUpdate = await _context.StationeryQuote.FindAsync(id);
+
+            if (stationeryQuoteToUpdate == null)
+            {
+                return NotFound();
+            }
+
+            stationeryQuoteToUpdate.IsActive = !stationeryQuoteToUpdate.IsActive;
+
+            await _context.SaveChangesAsync();
+
+            return RedirectToPage("./Details", new { id });
         }
     }
 }
+

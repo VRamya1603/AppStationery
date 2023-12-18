@@ -51,7 +51,8 @@ namespace AppStationery.Pages_StationeryQuotes
 
             if (StationeryQuote != null)
             {
-                _context.StationeryQuote.Remove(StationeryQuote);
+                //_context.StationeryQuote.Remove(StationeryQuote);
+                StationeryQuote.IsDeleted = true;
                 await _context.SaveChangesAsync();
             }
 

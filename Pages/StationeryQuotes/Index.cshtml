@@ -8,7 +8,7 @@
 <h1>Index</h1>
 
 <p>
-    <a asp-page="Create">Create New</a>
+    <button type="button" onclick ="location.href ='@Url.Page("./Create")'" class="btn btn-primary">Create New</button>
 </p>
 <table class="table">
     <thead>
@@ -44,34 +44,22 @@
                 @Html.DisplayNameFor(model => model.StationeryQuote[0].Branch)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.StationeryQuote[0].TenantId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.StationeryQuote[0].ApprovalState)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.StationeryQuote[0].ApprovedBy)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.StationeryQuote[0].ApprovedOn)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.StationeryQuote[0].Comments)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.StationeryQuote[0].IsActive)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.StationeryQuote[0].IsDeleted)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.StationeryQuote) {
+@if(Model.StationeryQuote != null && Model.StationeryQuote != null && Model.StationeryQuote.Any())
+{
+    @foreach (var item in Model.StationeryQuote)
+    {
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.PrintingStationery.Name)
+        <td>
+                @Html.DisplayFor(modelItem => item.PrintingStationery)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.QuoteNo)
@@ -82,7 +70,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.QuotedOn)
             </td>
-            <td>
+            <td> 
                 @Html.DisplayFor(modelItem => item.QuotePerCopyPrice)
             </td>
             <td>
@@ -98,35 +86,22 @@
                 @Html.DisplayFor(modelItem => item.MinmumOrderQuantity)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Branch.BranchName)
+                @Html.DisplayFor(modelItem => item.Branch)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.TenantId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ApprovalState)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ApprovedBy.UserName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ApprovedOn)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Comments)
+                @Html.DisplayFor(modelItem => item.ApprovedBy)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.IsActive)
             </td>
+        
             <td>
-                @Html.DisplayFor(modelItem => item.IsDeleted)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.StationeryQuoteId">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.StationeryQuoteId">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.StationeryQuoteId">Delete</a>
+                <button type="button" onclick="location.href='@Url.Page("./Edit", new { id = item.StationeryQuoteId })'" class="btn btn-primary">Edit</button> |
+                <button type="button" onclick="location.href='@Url.Page("./Details", new { id = item.StationeryQuoteId })'" class="btn btn-secondary">Details</button> |
+                <button type="button" onclick="location.href='@Url.Page("./Delete", new { id = item.StationeryQuoteId })'" class="btn btn-danger">Delete</button>
             </td>
         </tr>
+    }
 }
     </tbody>
 </table>

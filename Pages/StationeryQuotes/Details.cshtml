@@ -116,6 +116,34 @@
     </dl>
 </div>
 <div>
-    <a asp-page="./Edit" asp-route-id="@Model.StationeryQuote.StationeryQuoteId">Edit</a> |
-    <a asp-page="./Index">Back to List</a>
-</div>
+    <form method="get">
+        <input type="hidden" name="id" value="@Model.StationeryQuote.StationeryQuoteId" />
+        <button type="submit" formaction="./Edit" class="btn btn-primary">Edit</button>
+        <button type="submit" formaction="./Index" class="btn btn-secondary">Back to List</button>
+    </form>
+ </div>
+
+<form method="post">
+    <div class="form-group">
+        <button type="submit" asp-page-handler="Approval" asp-route-id="@Model.StationeryQuote.StationeryQuoteId" class="btn btn-primary">
+            @if (Model.StationeryQuote.ApprovalState == AppStationery.Model.ApprovalState.Approved)
+            {
+                <span>Unapprove</span>
+            }
+            else
+            {
+                <span>Approved</span>
+            }
+        </button>
+        <button type="submit" asp-page-handler="Active" asp-route-id="@Model.StationeryQuote.StationeryQuoteId" class="btn btn-secondary">
+            @if (Model.StationeryQuote.IsActive)
+            {
+                <span>Deactive</span>
+            }
+            else
+            {
+                <span>Active</span>
+            }
+        </button>
+    </div>
+</form>

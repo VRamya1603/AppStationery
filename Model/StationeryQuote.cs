@@ -9,9 +9,8 @@ namespace AppStationery.Model
 {
     public enum ApprovalState
     {
-        Pending,
         Approved,
-        Rejected
+        Unapproved
     }
 
     [MultiTenant]
@@ -26,7 +25,7 @@ namespace AppStationery.Model
         public string? ReferenceNo { get; set; }
 
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:dd-mm-yyyy}", ApplyFormatInEditMode = true)]
         [Display(Name = "Quoted On")]
         public DateTime QuotedOn { get; set; } = DateTime.UtcNow;
 
@@ -56,11 +55,10 @@ namespace AppStationery.Model
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [Display(Name = "Approved On")]
-        public DateTime? ApprovedOn { get; set; }
+        public DateTime? ApprovedOn { get; set;} = DateTime.UtcNow;
 
         [DataType(DataType.MultilineText)]
-        public string? Comments { get; set; }
-
+        public string? Comments {get; set;}
         public bool IsActive { get; set; }
         public bool IsDeleted { get; set; }
     }

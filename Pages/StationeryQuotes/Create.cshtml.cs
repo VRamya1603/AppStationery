@@ -37,6 +37,8 @@ namespace AppStationery.Pages_StationeryQuotes
                 return Page();
             }
 
+            StationeryQuote.QuotedOn = DateTime.UtcNow;
+
             _context.StationeryQuote.Add(StationeryQuote);
             await _context.SaveChangesAsync();
 
